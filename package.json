@@ -1,0 +1,88 @@
+{
+  "name": "icon-font-preview",
+  "displayName": "Icon Font Preview",
+  "description": "VS Code extension to preview icons from custom fonts directly in your code editor",
+  "version": "1.0.0",
+  "publisher": "ludovicquenehen",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "iconFontPreview.reload",
+        "title": "Icon Font Preview: Reload CSS font file"
+      },
+      {
+        "command": "iconFontPreview.openBrowser",
+        "title": "Icon Font Preview: Open Icon Browser"
+      }
+    ],
+    "configuration": {
+      "title": "Icon Font Preview",
+      "properties": {
+        "iconFontPreview.cssFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to your icon font CSS file (absolute or relative to workspace root). E.g. ./assets/icons/my-icons.css"
+        },
+        "iconFontPreview.fontFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to your .ttf or .woff font file (absolute or relative to CSS file). Leave empty to auto-detect from CSS @font-face."
+        },
+        "iconFontPreview.classPrefix": {
+          "type": "string",
+          "default": "",
+          "description": "Icon class prefix to detect in your files. E.g. 'icon-', 'fa-', 'ri-'. Leave empty to auto-detect from CSS."
+        },
+        "iconFontPreview.triggerCharacters": {
+          "type": "array",
+          "default": [
+            "\"",
+            "'",
+            " "
+          ],
+          "description": "Characters that trigger autocomplete for icon names."
+        },
+        "iconFontPreview.languages": {
+          "type": "array",
+          "default": [
+            "html",
+            "css",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "vue",
+            "php"
+          ],
+          "description": "Languages where icon preview and autocomplete are active."
+        },
+        "iconFontPreview.decorationColor": {
+          "type": "string",
+          "default": "#C7C7FF",
+          "description": "Color of the inline icon preview glyph."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.37",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.9.3"
+  }
+}

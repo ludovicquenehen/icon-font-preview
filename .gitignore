@@ -1,0 +1,9 @@
+# VS Code
+.vscode/
+*.code-workspace
+
+# Node modules
+node_modules
+
+# Code compilé
+out/
